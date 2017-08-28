@@ -99,3 +99,13 @@ ENV/
 
 # mypy
 .mypy_cache/
+.terraform
+ec2-key*
+terraform.tfstate*
+*.crt
+*.csr
+*.key
+*.ovpn
+*.retry
+roles/
+*.lock.info
