@@ -74,10 +74,10 @@ I've also chosen to do a "two stage" setup with resource creation/provision hand
 
 Terraform resources are also arranged as modules, partly just to demonstrate modules.  Nevertheless this might be useful if you want to, for instance, eliminate bastions for multiple VPCs by instantiating multiple OpenVPN servers.  Note that individual OpenVPN servers can also support multiple VPNs, but we use one by default.
 
-There are a variety of ways to override things at the Terraform layer (i.e. AWS region etc) which can be potentially confusing.  There's the [vars.tf](vars.tf) file where you can modify things directly by changing/adding defaults.  There's also the  [TF_VAR_name](https://www.terraform.io/docs/configuration/environment-variables.html#tf_var_name) trick, if you want to set values using environment variables.  There's also the openvpn module instantiation in [main.tf](main.tf) which allows for overrides.
+There are a variety of ways to override things at the Terraform layer (i.e. AWS region etc) which can be potentially confusing.  There's the [vars.tf](vars.tf) file where you can modify things directly by changing/adding defaults.  There's also the  [TF_VAR_name](https://www.terraform.io/docs/configuration/environment-variables.html#tf_var_name) trick, if you want to set values using environment variables.  There's also the `openvpn` terraform module instantiation in [main.tf](main.tf) which allows for overrides.
 
 For overriding things at the OpenVPN configuration layer, things are simpler.  Go have a close reading of the documentation for the [Stouts.openvpn](https://github.com/Stouts/Stouts.openvpn) role, which does almost all the real work here anyway.  Consider adding variables that it understands/supports.  Otherwise, you can always just pile new Ansible into the [openvpn.yml](openvpn.yml) file to override cert files with your own uploads, etc.
 
 ## Pull Requests
 
-Are welcome
+Are welcome.
