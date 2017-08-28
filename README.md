@@ -4,10 +4,10 @@ This project is a top-to-bottom [OpenVPN](https://openvpn.net/) setup for ubuntu
 
 In terms of server configuration, the heavy lifting for this project is mostly courtesy of the excellent [Stouts.openvpn](https://github.com/Stouts/Stouts.openvpn) ansible role.  What this repository does on top of that is:
 
-  * pin the ansible role and the ubuntu AMI at known-working versions
-  * add extra ansible to forward *everything* from clients through the VPN
-  * provide modular terraform that sets up the AWS server/security groups to work with OpenVPN
-  * provide a Makefile that can execute both the terraform and the ansible
+  * pin the Ansible role and the Ubuntu AMI at known-working versions
+  * add extra Ansible to forward *everything* from clients through the VPN
+  * provide modular Terraform that sets up the AWS server/security groups to work with OpenVPN
+  * provide a Makefile helps to execute both the Terraform and the Ansible and inject parameters from environment variables
 
 ## Prerequisites
 
