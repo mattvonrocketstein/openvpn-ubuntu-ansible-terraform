@@ -1,13 +1,13 @@
 ## About
 
-This project is a top-to-bottom [OpenVPN](https://openvpn.net/) setup for ubuntu on AWS, using Terraform to create the EC2 resources and security groups, and Ansible to setup VPN users.
+This project is a top-to-bottom [OpenVPN](https://openvpn.net/) setup for Ubuntu on AWS, using Terraform to create the EC2 resources and security groups, and Ansible to setup VPN users.
 
 In terms of server configuration, the heavy lifting for this project is mostly courtesy of the excellent [Stouts.openvpn](https://github.com/Stouts/Stouts.openvpn) ansible role.  What this repository does on top of that is:
 
-  * pin the Ansible role and the Ubuntu AMI at known-working versions
-  * add extra Ansible to forward *everything* from clients through the VPN
-  * provide modular Terraform that sets up the AWS server/security groups to work with OpenVPN
-  * provide a Makefile helps to execute both the Terraform and the Ansible and inject parameters from environment variables
+  * Pins the Ansible role and the Ubuntu AMI at known-working versions (currently Ubuntu Trusty)
+  * Adds extra Ansible to forward *everything* from clients through the VPN
+  * Provides modular Terraform that sets up the AWS server/security groups to work with OpenVPN
+  * Provides a Makefile helps to execute both the Terraform and the Ansible and inject parameters from environment variables
 
 ## Prerequisites
 
@@ -34,9 +34,9 @@ You'll also need local copies of `terraform`, `ansible`, and `jq`.  My (confirme
 
 1. Edit the [Makefile](Makefile) directly to change the primary VPN user's default username/password. Edit the ansible file [openvpn.yml](openvpn.yml) to add additional VPN users.
 
-2. Afterwards, run `make vpn` and answer when it asks for the named AWS profile to use.  When this finishes an OpenVPN will be setup and ready to go, so you just need to configure a client.  After this step is completed, there are several new files in the working directory which will be used for that configuration.
+2. Afterwards, run `make vpn` and answer when it asks for the named AWS profile to use.  When this finishes an OpenVPN server will be setup and ready to go, so you just need to configure a client.  
 
-3. As a VPN client, I recommend [tunnelblick](https://tunnelblick.net), where setup is especially easy.  Drag the new `default.ovpn` file inside the working directory onto the tunnelblick icon in the menubar and connect with the user/password you set in the Makefile.  Done!  You can verify your configuration by visiting a place like [http://www.whatsmyip.org/](http://www.whatsmyip.org/).
+3. As a VPN client, I recommend [tunnelblick](https://tunnelblick.net), where setup is especially easy.  When step 2 above finished, you are left with several new files in the working directory which can be used to configure the client.  Assuming you didn't change the `VPN_NAME`, one of these files is `default.ovpn`.  Simply drag the new `default.ovpn` file onto the tunnelblick icon in the menubar and connect with the user/password you set in the Makefile.  Done!  You can verify your configuration by visiting a place like [http://www.whatsmyip.org/](http://www.whatsmyip.org/).
 
 ## Step by Step
 

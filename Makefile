@@ -23,8 +23,8 @@ assert-%:
 
 vpn:
 	@read -p "Enter AWS Profile Name: " profile; \
-	TF_VAR_aws_profile=$$profile make keypair; \
-	TF_VAR_aws_profile=$$profile make apply; \
+	TF_VAR_aws_profile=$$profile make keypair && \
+	TF_VAR_aws_profile=$$profile make apply && \
 	TF_VAR_aws_profile=$$profile make reprovision
 
 require-ansible:
