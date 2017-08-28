@@ -2,6 +2,13 @@
 
 This project is a top-to-bottom [OpenVPN](https://openvpn.net/) setup for ubuntu on AWS, using Terraform to create the EC2 resources and security groups, and Ansible to setup VPN users.
 
+In terms of server configuration, the heavy lifting for this project is mostly courtesy of the excellent [Stouts.openvpn](https://github.com/Stouts/Stouts.openvpn) ansible role.  What this repository does on top of that is:
+
+  * pin the ansible role and the ubuntu AMI at known-working versions
+  * add extra ansible to forward *everything* from clients through the VPN
+  * provide modular terraform that sets up the AWS server/security groups to work with OpenVPN
+  * provide a Makefile that can execute both the terraform and the ansible
+
 ## Prerequisites
 
 Valid named AWS profiles should already be setup in your `~/.aws/credentials` file.  We'll assume in the rest of this guide that the profile you want to use is called `MY_PROFILE`.
